@@ -22,7 +22,7 @@ function App() {
     // T-SHIRTS
     {
       id: 1,
-      name: "Oversized Red T-Shirt",
+      name: "Oversized Black T-Shirt",
       price: 499,
       category: "T-Shirts",
       colour: "Black",
