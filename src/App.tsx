@@ -17,6 +17,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [activePage, setActivePage] = useState("products");
+  const [gender, setGender] = useState("All");
 
   const products: Product[] = [
     // T-SHIRTS
@@ -80,7 +81,7 @@ function App() {
       gender: "Men",
       newArrival: false,
       image:
-        "https://i.pinimg.com/originals/f0/c8/71/f0c871e5d1a754fc9fcc1a70767b1e6a.jpg",
+        "https://www.selectedhomme.in/products/901916601-button-down-oxford-shirt-blue?srsltid=AfmBOorv_FcrWN70Bu_whEjnoUESqygLEJXgPDeOeAHUZQFZ9p3nYurK",
     },
     {
       id: 6,
@@ -91,8 +92,7 @@ function App() {
       size: "XL",
       gender: "Men",
       newArrival: true,
-      image:
-        "https://tse2.mm.bing.net/th/id/OIP.J1iTvEWVkF-AUOgW-EtfHwHaJ4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      image: "https://www.richlook.in/cdn/shop/files/40_img.jpg?v=1765011779",
     },
 
     // JEANS
@@ -106,7 +106,7 @@ function App() {
       gender: "Men",
       newArrival: true,
       image:
-        "https://tse3.mm.bing.net/th/id/OIP.c12OpoDUXAWLfyajjBnEtAHaL0?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "https://www.cilory.com/loose-fit-jeans/198016-mens-faded-blue-baggy-wide-leg-jeans-by-grunt.html?srsltid=AfmBOoo-twkPrdTIHqAyh33si2Uvfu6sQPstDtRpS4_FRHxQmgX29Rnr",
     },
     {
       id: 8,
@@ -118,7 +118,7 @@ function App() {
       gender: "Men",
       newArrival: false,
       image:
-        "https://tse2.mm.bing.net/th/id/OIP.f448gsDtS8r8TzvWaJRPCAHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "https://imagescdn.pantaloons.com/img/app/product/9/985609-13035225.jpg?auto=format&w=450",
     },
     {
       id: 9,
@@ -183,6 +183,8 @@ function App() {
 
     const matchesSize = size === "All" || product.size === size;
 
+    const matchesGender = gender === "All" || product.gender === gender;
+
     const matchesPage =
       activePage === "products" ||
       (activePage === "men" && product.gender === "Men") ||
@@ -192,8 +194,9 @@ function App() {
     return (
       matchesSearch &&
       matchesCategory &&
-      matchesSize &&
       matchesColour &&
+      matchesSize &&
+      matchesGender &&
       matchesPage
     );
   });
@@ -346,13 +349,28 @@ function App() {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
+              <div className="filter-group">
+                {(activePage === "new" || activePage === "products") && (
+                  <div className="filter-group">
+                    <label>Gender</label>
+                    <select
+                      value={gender}
+                      onChange={(event) => setGender(event.target.value)}
+                    >
+                      <option value="All">All</option>
+                      <option value="Men">Men</option>
+                      <option value="Women">Women</option>
+                    </select>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <div className="products-header">
             <h2>
               {activePage === "products" && "All Products"}
-              {activePage === "men" && "Men's Collection"}
-              {activePage === "women" && "Women's Collection"}
+              {activePage === "Men" && "Men's Collection"}
+              {activePage === "Women" && "Women's Collection"}
               {activePage === "new" && "New Arrivals"}
             </h2>
 

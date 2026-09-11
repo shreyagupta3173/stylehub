@@ -553,8 +553,8 @@
 }
 
 .remove-button {
-  border: none;
-  background: none;
+  border: 1px solid #ccc;
+  background: rgb(63, 53, 53);
 
   color: #888;
 
@@ -564,6 +564,13 @@
 .remove-button:hover {
   text-decoration: underline;
 }
+
+.app-dark .remove-button {
+  color: #040404;
+  border-color: #303232;
+  cursor: pointer;
+}
+
 
 .cart-item-total {
   min-width: 100px;
